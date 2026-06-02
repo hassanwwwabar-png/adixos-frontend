@@ -16,7 +16,7 @@ export default function BillingPage() {
 
   // 🚀 جلب الأسعار وطرق الدفع من السيرفر
   useEffect(() => {
-    fetch("http://2.24.14.60:8000/api/settings")
+    fetch("/api/settings")
       .then(res => res.json())
       .then(data => {
         if(data) setSettings(data);
@@ -58,7 +58,7 @@ export default function BillingPage() {
     try {
       console.log("🚀 Sending payment for User:", savedUser.id); // للطباعة في الكونسول
 
-      const res = await fetch("http://2.24.14.60:8000/api/payments/upload", {
+      const res = await fetch("/api/payments/upload", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

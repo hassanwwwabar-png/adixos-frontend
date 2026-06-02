@@ -9,7 +9,7 @@ export default function AdminMessages() {
   const fetchMessages = async () => {
     setLoading(true);
     try {
-      const res = await fetch("http://2.24.14.60:8000/api/admin/support_messages");
+      const res = await fetch("/api/admin/support_messages");
       const data = await res.json();
       setMessages(data);
     } catch (err) {

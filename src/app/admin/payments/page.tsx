@@ -15,12 +15,12 @@ export default function AdminPayments() {
     setLoading(true);
     try {
       // جلب المدفوعات
-      const payRes = await fetch("http://2.24.14.60:8000/api/admin/payments");
+      const payRes = await fetch("/api/admin/payments");
       const payData = await payRes.json();
       setPayments(payData);
 
       // جلب الإعدادات الحالية
-      const setRes = await fetch("http://2.24.14.60:8000/api/settings");
+      const setRes = await fetch("/api/settings");
       const setData = await setRes.json();
       setSettings(setData);
 
@@ -37,7 +37,7 @@ export default function AdminPayments() {
 
   const handleSaveSettings = async () => {
     setSavingSettings(true);
-    await fetch("http://2.24.14.60:8000/api/admin/settings", {
+    await fetch("/api/admin/settings", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(settings)
@@ -48,7 +48,7 @@ export default function AdminPayments() {
 
   const handleApprove = async (paymentId: string) => {
     if(!confirm("Approve this payment and add 30 days to the user?")) return;
-    await fetch(`http://2.24.14.60:8000/api/admin/payments/approve/${paymentId}`, { method: "POST" });
+    await fetch(`/api/admin/payments/approve/${paymentId}`, { method: "POST" });
     fetchData();
   };
 

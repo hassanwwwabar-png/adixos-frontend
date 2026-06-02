@@ -9,7 +9,7 @@ export default function WhatsappOverview() {
 
   // 🚀 جلب الطلبات الحقيقية
   useEffect(() => {
-    fetch("http://2.24.14.60:8000/api/orders")
+    fetch("/api/orders")
       .then(res => res.json())
       .then(data => {
         setOrders(data);
@@ -28,7 +28,7 @@ export default function WhatsappOverview() {
     if (!confirm("Are you sure you want to delete this order?")) return;
 
     try {
-      await fetch(`http://2.24.14.60:8000/api/orders/${id}`, { method: "DELETE" });
+      await fetch(`/api/orders/${id}`, { method: "DELETE" });
       setOrders(prevOrders => {
         const newOrders = prevOrders.filter(order => order.id !== id);
         const newTotal = newOrders.reduce((sum: number, order: any) => sum + (order.total_price || 0), 0);

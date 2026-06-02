@@ -19,7 +19,7 @@ export default function SignUp() {
     setIsLoading(true);
 
     try {
-      const response = await fetch("http://2.24.14.60:8000/api/signup", {
+      const response = await fetch("/api/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, storeName, password }),
