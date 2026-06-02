@@ -10,7 +10,7 @@ export default function RequiresAttention() {
   const fetchEscalations = async () => {
     try {
       // 🚨 هذا الرابط يتصل بالبايثون مباشرة لجلب المشاكل المسجلة
-      const res = await fetch("http://127.0.0.1:8005/api/escalations");
+      const res = await fetch("http://2.24.14.60:8000/api/escalations");
       const data = await res.json();
       setEscalations(data || []);
     } catch (error) {
@@ -35,7 +35,7 @@ export default function RequiresAttention() {
     
     try {
       // 🚀 إرسال أمر الحذف للسيرفر (البايثون)
-      await fetch(`http://127.0.0.1:8005/api/escalations/${id}`, { 
+      await fetch(`http://2.24.14.60:8000/api/escalations/${id}`, { 
         method: "DELETE" 
       });
       

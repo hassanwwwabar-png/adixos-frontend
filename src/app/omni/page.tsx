@@ -38,7 +38,7 @@ export default function DashboardHome() {
   // 2. جلب الطلبات والإحصائيات
   const fetchDashboardData = async (phoneId: string) => { // نستخدم الـ ID كمثال
     try {
-      const res = await fetch(`http://127.0.0.1:8005/my-orders?phone_id=972036212662630`);
+      const res = await fetch(`http://2.24.14.60:8000/my-orders?phone_id=972036212662630`);
       if (res.ok) {
         const data = await res.json();
         setOrders(data);

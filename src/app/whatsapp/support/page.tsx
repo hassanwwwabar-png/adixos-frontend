@@ -18,7 +18,7 @@ export default function WhatsAppSupport() {
     setSending(true);
 
     try {
-      const response = await fetch("http://127.0.0.1:8005/api/support", {
+      const response = await fetch("http://2.24.14.60:8000/api/support", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

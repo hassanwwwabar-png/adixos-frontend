@@ -10,7 +10,7 @@ export default function Home() {
 
   // 🚀 جلب الطلبات والأرقام الحقيقية
   useEffect(() => {
-    fetch("http://127.0.0.1:8005/api/orders")
+    fetch("http://2.24.14.60:8000/api/orders")
       .then(res => res.json())
       .then(data => {
         if (data && Array.isArray(data)) {

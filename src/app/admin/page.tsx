@@ -9,7 +9,7 @@ export default function AdminDashboard() {
   // جلب العملاء من قاعدة البيانات
   const fetchUsers = async () => {
     try {
-      const res = await fetch("http://127.0.0.1:8005/api/admin/users");
+      const res = await fetch("http://2.24.14.60:8000/api/admin/users");
       const data = await res.json();
       setClients(data.users || []);
     } catch (error) {
@@ -27,7 +27,7 @@ export default function AdminDashboard() {
   const handleAddDays = async (userId: string) => {
     if (!confirm("Are you sure you want to add 30 days to this user?")) return;
     
-    await fetch(`http://127.0.0.1:8005/api/admin/users/${userId}/add-days?days=30`, { method: "POST" });
+    await fetch(`http://2.24.14.60:8000/api/admin/users/${userId}/add-days?days=30`, { method: "POST" });
     fetchUsers(); // تحديث القائمة
   };
 
@@ -35,7 +35,7 @@ export default function AdminDashboard() {
   const handleRevokeAccess = async (userId: string) => {
     if (!confirm("⚠️ Are you sure you want to suspend this user? They will be locked out immediately!")) return;
     
-    await fetch(`http://127.0.0.1:8005/api/admin/users/${userId}/revoke`, { method: "POST" });
+    await fetch(`http://2.24.14.60:8000/api/admin/users/${userId}/revoke`, { method: "POST" });
     fetchUsers(); // تحديث القائمة لترى الحالة تحولت إلى Expired
   };
 
@@ -43,7 +43,7 @@ export default function AdminDashboard() {
   const handleDeleteUser = async (userId: string) => {
     if (!confirm("🚨 WARNING: This will delete the user and all their messages! Continue?")) return;
     
-    await fetch(`http://127.0.0.1:8005/api/admin/users/${userId}`, { method: "DELETE" });
+    await fetch(`http://2.24.14.60:8000/api/admin/users/${userId}`, { method: "DELETE" });
     fetchUsers(); // تحديث القائمة
   };
 
