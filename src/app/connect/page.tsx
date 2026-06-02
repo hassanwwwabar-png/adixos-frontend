@@ -24,7 +24,9 @@ export default function ConnectWhatsApp() {
     setUser(parsedUser);
 
     // 2. الاتصال بمحرك الواتساب (تم التصحيح هنا ✅)
-    socket = io();
+    socket = io({
+  transports: ["polling"], // نجبر المحرك على استخدام HTTP فقط لكي يمر من Vercel بسلام
+});
 
     socket.on("connect", () => {
       console.log("🔌 Connected to WhatsApp Engine");
