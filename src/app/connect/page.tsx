@@ -23,8 +23,8 @@ export default function ConnectWhatsApp() {
     const parsedUser = JSON.parse(savedUser);
     setUser(parsedUser);
 
-    // 2. الاتصال بمحرك الواتساب
-    socket = io("http://localhost:3001");
+    // 2. الاتصال بمحرك الواتساب (تم التصحيح هنا ✅)
+    socket = io();
 
     socket.on("connect", () => {
       console.log("🔌 Connected to WhatsApp Engine");
@@ -68,7 +68,8 @@ export default function ConnectWhatsApp() {
     setStatus("initializing"); // إظهار التحميل
 
     try {
-      await fetch('http://localhost:3001/api/whatsapp/disconnect', { 
+      // (تم التصحيح هنا ✅)
+      await fetch('/api/whatsapp/disconnect', { 
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userId: user.id })
@@ -133,7 +134,7 @@ export default function ConnectWhatsApp() {
             </div>
           )}
 
-          {/* الحالة 4: متصل مسبقاً (هذا ما طلبته!) */}
+          {/* الحالة 4: متصل مسبقاً */}
           {status === "already_connected" && (
             <div className="space-y-6">
               <div className="p-4 bg-green-50 text-green-700 rounded-xl border border-green-200">
